@@ -1,0 +1,81 @@
+.b-card-features {
+    position: absolute;
+    top: 183px;
+    left: 0;
+    height: 70px;
+    padding: 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    z-index: 1001;
+    &__item {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+        height: 30px;
+        width: 30px;
+        padding: 5px 0;
+        border-radius: 20px;
+        vertical-align: top;
+        background-color: $white;
+        font-size: 12px;
+        box-sizing: border-box;
+        font-weight: normal;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__inner {
+        position: relative;
+        display: block;
+        height: 20px;
+        padding: 2px 0 2px 0;
+        border-radius: 20px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        fill: $color_text;
+        overflow: hidden;
+        color: $color_text;
+        background-color: $white;
+    }
+    &__icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 5px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        &_offer-week {
+            background-image: url("i/icon-offer-week-red.svg");
+        }
+        &_best-price {
+            background-image: url("i/icon-best-price-red.svg");
+        }
+        &_best-state {
+            background-image: url("i/icon-best-state-red.svg");
+        }
+        &_sale {
+            
+            background-image: url("i/icon-sale-red.svg");
+        }
+    }
+    &__text {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0 20px 0 35px;
+        color: $dark;
+    }
+
+    &_body:hover &__inner {
+        background-color: $red;
+        color: $white;
+    }
+    &:hover &__icon,
+    &:hover &__icon path {
+        fill: $white;
+    }
+    &_full {
+        top: 370px;
+    }
+}

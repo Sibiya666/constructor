@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'),
+     url(font/opensansregular.woff2),
+     url(font/opensansregular.woff),
+     url(font/opensansregular.ttf),
+     url(font/opensansregular.eot);
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Light'),
+     url(font/opensanslight.woff2),
+     url(font/opensanslight.woff),
+     url(font/opensanslight.ttf),
+     url(font/opensanslight.eot);
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold'),
+     url(font/opensanssemibold.woff2),
+     url(font/opensanssemibold.woff),
+     url(font/opensanssemibold.ttf),
+     url(font/opensanssemibold.eot);
+  font-weight: 600;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: $white;
+}
+body {
+  position: relative;
+  left: 0px;
+  color: $color_text;
+  font-family: $font-primary;
+  font-size: $font-size;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+.mobile-menu-opened body {
+  left: 270px;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+.filter-mobile-opened body {
+  overflow: hidden;
+}
+
+body.popup-opened {
+  position: fixed;
+  width: 100%;
+	overflow: hidden;
+}
+

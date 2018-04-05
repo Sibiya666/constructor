@@ -1,0 +1,40 @@
+.b-card-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    font-weight: 600;
+    overflow: hidden;
+    color: $dark;
+    &__container {
+        display: flex;
+    }
+    &__item {
+        flex: 2 100%;
+        margin-right: 10px;
+        white-space: normal;
+        overflow: hidden;
+        &:nth-child(2) {
+            flex: 1 1 50%;
+            margin-right: 0;
+        }
+    }
+    &__title {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: $dark;
+    }
+    &__year {
+        font-weight: 300;
+        font-size: $font-size;
+        color: $dark;
+    }
+    &__city {
+        margin-top: 10px;
+        text-align: right;
+        font-size: $font-size;
+        color: $dark;
+        font-weight: 300;
+    }
+}

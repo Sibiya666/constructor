@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="23px" viewBox="0 0 26 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-3" transform="translate(-274.000000, -48.000000)" fill="#ED1C24">
+            <g id="Group" transform="translate(272.000000, 44.000000)">
+                <path d="M9.38297872,4 C10.4424885,4 11.3148242,4.60371429 12.2446809,5.66964286 C12.8340371,6.34524286 13.4183476,7.18926571 14,8 L9.28723404,8 C7.97552987,8 7,6.97657143 7,6 C7,4.97874 7.93817668,4 9.38297872,4 Z" id="Path"></path>
+                <path d="M20.6170213,4 C22.0618233,4 23,4.97874 23,6 C23,6.97657143 22.0244701,8 20.712766,8 L16,8 C16.5816524,7.18926571 17.1659629,6.34524286 17.7553191,5.66964286 C18.6851758,4.60371429 19.5575115,4 20.6170213,4 Z" id="Path"></path>
+                <polygon id="Path" points="2 9 12 9 12 12 2 12"></polygon>
+                <polygon id="Path" points="13 9 17 9 17 27 13 27"></polygon>
+                <polygon id="Path" points="18 9 28 9 28 12 18 12"></polygon>
+                <polygon id="Path" points="18 13 26 13 26 27 18 27"></polygon>
+                <polygon id="Path-Copy" points="4 13 12 13 12 27 4 27"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

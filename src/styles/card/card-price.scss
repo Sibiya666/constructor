@@ -1,0 +1,112 @@
+.b-card-price {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    font-size: $font-size;
+    &__col-2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 50%;
+    }
+    &__title {
+        width: 100%;
+        margin-bottom: 5px;
+        font-size: $font-size;
+        font-weight: 300;
+        color: $grey-dark;
+    }
+    &__description {
+        width: 100%;
+        font-size: 18px;
+        color: $dark;
+        &_xl {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        &_sale {
+            color: $red;
+            & .b-text {
+                color: $dark;
+            }
+        }
+        &_sale-xl {
+            font-size: 26px;
+            font-weight: 600;
+        }
+        &_old-price {
+            position: relative;
+            color: $grey-dark;
+            font-weight: 300;
+            text-decoration: line-through;
+        }
+        &_credit {
+            width: auto;
+            padding: 0 5px 1px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 400;
+            line-height: 24px;
+            color: $white;
+            background-color: $red;
+            &:hover {
+                color: $white;
+            }
+            
+        }
+        &_credit &_xl {
+            height: 30px;
+            padding: 3px 20px 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        &_old-price &_xl {
+            margin-bottom: 0;
+        }
+    }
+    &__icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-image: url(i/icon-rub-black.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        &_sale {
+            background-image: url(i/icon-rub-red.svg);
+        }
+        &_sale-xl {
+            background-image: url(i/icon-rub-red.svg);
+            background-size: contain;
+            height: 18px;
+        }
+        &_credit {
+            background-image: url(i/icon-rub-white.svg);
+            width: 11px;
+            .b-card-price__description_xl & {
+                height: 16px;
+                background-size: contain;
+            }
+        }
+        &_old-price {
+            background-image: url("i/icon-rub-gray.svg");
+            height: 14px;
+            position: relative;
+            background-size: contain;
+            &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 59%;
+                width: 100%;
+                height: 1px;
+                background-color: $grey-dark;
+            }
+            .b-card-price__description_xl & {
+                height: 16px;
+            }
+        }
+    }
+}

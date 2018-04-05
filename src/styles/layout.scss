@@ -1,0 +1,17 @@
+.wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+.page-header {
+    display: flex;
+    padding: 20px;
+    background-color: $red;
+}
+.page-footer {
+    display: flex;
+    padding: 20px;
+    background-color: $dark-blue;
+}
+.main {
+    padding: 20px;
+}

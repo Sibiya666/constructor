@@ -1,0 +1,40 @@
+.m-card-features_full-state {
+  & .b-card-features__icon {
+    left: 10px;
+    right: inherit;
+  }
+}
+
+.m-card-features_short-state {
+  & .b-card-features__inner {
+    max-width: 30px;
+  }
+
+  & .b-card-features__icon {
+    top: 0;
+    left: 5px ;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+.b-car-feature_no-text {
+  @extend .m-card-features_short-state;
+}
+
+.b-card-features__accordion {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+
+  & .b-card-features__item {
+    @extend.m-card-features_short-state;
+    & .b-card-features__icon_sale {
+      top: 2px;
+      left: 6px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+}
