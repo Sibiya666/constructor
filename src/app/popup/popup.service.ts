@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PopupService {
+    componentRef: ComponentRef<any>;
 
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
@@ -33,34 +34,42 @@ export class PopupService {
 
     }
 
-    private componentsInputs(component: ComponentRef<any>, options: any): ComponentRef<any> {
-        const props = Object.keys(options);
+    private componentsInputs(component: ComponentRef<any>, data: any): ComponentRef<any> {
+        const props = Object.keys(data);
         for ( const prop of props) {
-            component.instance[prop] = options[prop];
+            component.instance[prop] = data[prop];
         }
         return component;
     }
 
-    openPopup() {
+    openPopup(data: any) {
         const position = this.getRootNode(this.getRootComponent());
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PopupComponent);
-        let componentRef = componentFactory.create(this.injector);
+        this.componentRef = componentFactory.create(this.injector);
         const appRef = this.appRef;
-        const componentRootNode = this.getRootNode(componentRef);
+        const componentRootNode = this.getRootNode(this.componentRef);
         const injector = ReflectiveInjector.resolveAndCreate([{
             provide: 'modal',
-            useValue: componentRef
+            useValue: this.componentRef
         }], this.injector);
 
-        this.componentsInputs(componentRef, {options: {}, injector: injector});
-        appRef.attachView(componentRef.hostView);
+        this.componentsInputs(this.componentRef, {options: data, injector: injector});
+        appRef.attachView(this.componentRef.hostView);
 
-        componentRef.onDestroy(() => {
-            appRef.detachView(componentRef.hostView);
-            componentRef = null;
+        this.componentRef.instance.close.subscribe(x => {
+            this.componentRef.destroy()
+        })
+
+        this.componentRef.onDestroy(() => {
+            appRef.detachView(this.componentRef.hostView);
+            this.componentRef = null;
         });
 
         position.appendChild(componentRootNode);
+    }
+
+    close() {
+       return this.componentRef.destroy
     }
 
 }

@@ -1,5 +1,10 @@
-export const moc = [
+export const MocData = [
     {
-        title: 'audi'
-    }
+        title: 'audi',
+        city:'Москва'
+    },
+    {
+        title: 'bmw',
+        city:'Краснодар'
+    },
 ]

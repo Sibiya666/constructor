@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
 import { PopupService } from '../popup';
 
 @Component({
@@ -7,17 +11,22 @@ import { PopupService } from '../popup';
 })
 export class CardComponent implements OnInit {
 
-  data = 1;
+  carData: any = null;
+  isData: boolean = false;
+  @Input()
+  cars: any;
   constructor(
     private popupService: PopupService
   ) { }
+
 
   ngOnInit() {
   }
 
   openPopup() {
-    this.popupService.openPopup();
+    this.popupService.openPopup(this.cars);
   }
 
+  
 
 }
