@@ -13,20 +13,20 @@ export class CardComponent implements OnInit {
 
   carData: any = null;
   isData: boolean = false;
+
   @Input()
   cars: any;
+
   constructor(
     private popupService: PopupService
   ) { }
 
 
-  ngOnInit() {
+  ngOnInit() {  }
+
+  getData: (_?) => { _};
+
+  async openPopup() {
+    this.carData = await this.popupService.openPopup(this.cars);
   }
-
-  openPopup() {
-    this.popupService.openPopup(this.cars);
-  }
-
-  
-
 }

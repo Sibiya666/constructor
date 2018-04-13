@@ -1,14 +1,18 @@
 $grid-columns: 12;
-$grid-spacing: 3%;
+$grid-spacing: 10px;
+
 @for $i from 1 through $grid-columns {
     .column-#{$i} {
-        width: 100% / $grid-columns * $i;
-        margin-right: $grid-spacing;
-        &:last-child {
-            margin-right:0%;
-            }
+        width: 100% / $grid-columns * $i - #{$grid-spacing * 2};
+        margin: $grid-spacing;
     }
 }
+
 .grid {
     display: flex;
+    flex-wrap: wrap;
+    &__row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
 }

@@ -1,11 +1,11 @@
-<div class="popup">
+<div class="popup" >
     <div class="popup__wrapper">
         <span class="popup__close" (click)="onClosehandler()"></span>
         <!-- Options добавляются к instans в сервисе -->
         <div class="popup__item"*ngFor="let item of options">
                 <p>{{item.title}}</p>
                 <p>{{item.city}}</p>
-            <button>Добавить</button>
+            <button (click)="addCar(item)">Добавить</button>
         </div>
     </div>
 </div>

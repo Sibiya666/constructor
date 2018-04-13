@@ -8,9 +8,11 @@ import {
     ComponentRef,
     ReflectiveInjector
 } from '@angular/core';
-
 import { PopupComponent } from './popup.component';
+import { IAppStore } from '../app.store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 @Injectable()
 export class PopupService {
@@ -19,7 +21,8 @@ export class PopupService {
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
         private injector: Injector,
-        private appRef: ApplicationRef
+        private appRef: ApplicationRef,
+        // private store: Store<IAppStore>
     ) { }
 
     private getRootComponent(): ComponentRef<any> {
@@ -43,34 +46,38 @@ export class PopupService {
     }
 
     openPopup(data: any) {
-        const position = this.getRootNode(this.getRootComponent());
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PopupComponent);
-        this.componentRef = componentFactory.create(this.injector);
-        const appRef = this.appRef;
-        const componentRootNode = this.getRootNode(this.componentRef);
-        const injector = ReflectiveInjector.resolveAndCreate([{
-            provide: 'modal',
-            useValue: this.componentRef
-        }], this.injector);
-
-        this.componentsInputs(this.componentRef, {options: data, injector: injector});
-        appRef.attachView(this.componentRef.hostView);
-
-        this.componentRef.instance.close.subscribe(x => {
-            this.componentRef.destroy()
+        return new Promise(resolve  => {
+            const position = this.getRootNode(this.getRootComponent());
+            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PopupComponent);
+            this.componentRef = componentFactory.create(this.injector);
+            const appRef = this.appRef;
+            const componentRootNode = this.getRootNode(this.componentRef);
+            const injector = ReflectiveInjector.resolveAndCreate([{
+                provide: 'modal',
+                useValue: this.componentRef
+            }], this.injector);
+    
+            this.componentsInputs(this.componentRef, {options: data, injector: injector});
+            appRef.attachView(this.componentRef.hostView);
+            position.appendChild(componentRootNode);
+    
+            this.componentRef.onDestroy(() => {
+                appRef.detachView(this.componentRef.hostView);
+                this.componentRef = null;
+            });
+    
+            this.componentRef.instance.close = (data) => {
+    
+                if(data) {
+                    resolve(data)
+                }
+    
+                this.componentRef.destroy();
+            }
+            
         })
+        
 
-        this.componentRef.onDestroy(() => {
-            appRef.detachView(this.componentRef.hostView);
-            this.componentRef = null;
-        });
-
-        position.appendChild(componentRootNode);
     }
-
-    close() {
-       return this.componentRef.destroy
-    }
-
 }
 

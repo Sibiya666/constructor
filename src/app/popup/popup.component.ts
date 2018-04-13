@@ -15,33 +15,27 @@ const KeyCode = 27;
     selector: 'app-popup',
     templateUrl: './popup.component.html',
     host:{
-        '(document:keydown)': 'onKeydownHandler($event)',
-        // '(document:click)': 'outsideClickHandler($event)'
+        '(document:keydown)': 'onKeydownHandler($event)'
     }
 })
 export class PopupComponent implements OnInit {
     constructor() {}
  
+    close: (_?) => {_};
 
-    @Output()
-    close = new EventEmitter<any>()
+    ngOnInit() { }
 
-    ngOnInit() {
-
+    onClosehandler(): void {
+       this.close()
     }
 
-    onClosehandler() {
-        this.close.next(null);
-    }
-
-    onKeydownHandler(event: KeyboardEvent) {
+    onKeydownHandler(event: KeyboardEvent): void {
         if(event.keyCode == KeyCode) {
            this.onClosehandler()
         }
     }
- 
-    outsideClickHandler(event: MouseEvent) {
-        console.log(event.target)
-        // if()
+
+    addCar(data):void {
+       this.close(data)
     }
 }
