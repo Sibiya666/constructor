@@ -1,30 +1,31 @@
 
-  <div class="b-card" (click)="openPopup()">
+  <div class="b-card" >
     
-    <!-- <a class="b-card__overlay-link" href="/car/2538"></a> -->
+    <a class="b-card__overlay-link">
+      <button (click)="openPopup()">add card</button>
+      <button (click)="toogleVisibleOptions()">options</button>
 
-    <div class="b-card-loader"  *ngIf="!carData; else card">
+    </a>
+
+    <!-- <div class="b-card-loader"  *ngIf="!carData; else card">
       <p >Добавить..</p>
-    </div>
-    <ng-template #card>
-      <div class="b-card-header" >
-        <img alt="Авто с пробегом" class="b-card-header__image" [src]= "carData.img">
-      </div>
-      
-      <div class="b-card-features">
-        <div class="b-card-features__accordion">
-          <span class="b-card-features__item">
-            <span class="b-card-features__inner">
-              <span class="b-card-features__icon b-card-features__icon_offer-week"></span>
-            </span>
-          </span>
+    </div> -->
+    <div #card>
 
-          <span class="b-card-features__item">
-            <span class="b-card-features__inner">
-              <div class="b-card-features__icon b-card-features__icon_best-state"></div>
-            </span>
-          </span>
-        </div>
+      <!-- <div class="b-card__options" [@optionsState]="visibleOptions" *ngIf="visibleOptions">
+        <p>kjlk</p>
+      </div> -->
+      <app-card-options 
+        [isVisible]="visibleOptions"
+        (brightness)="changeBrightness($event)"
+        ></app-card-options>
+      <div class="b-card-header" >
+        <img 
+          alt="Авто с пробегом" 
+          class="b-card-header__image" 
+          [src]= "carData.img"
+          [ngStyle]="{'filter': 'brightness(' + brightness + ')'}"
+          >
       </div>
 
       <div class="b-card__bottom">
@@ -53,5 +54,5 @@
           <div class="b-card__info-txt"> 56 341 км | 1.6 л, 124 л. с., Бензиновый | Механика, Передний привод | Внедорожник </div>
         </div>
       </div>
-    </ng-template>
+    </div>
   </div>

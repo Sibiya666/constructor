@@ -30,23 +30,9 @@
     .b-car-catalog__button_right {
         width: 51.6%;
     }
-    &:hover &__info {
-        height: 95px;
-        opacity: 1;
-        z-index: 1000;
-    }
-    &:hover {
-        box-shadow: 0 45px 30px 0 rgba(0, 0, 0, 0.05), 0 45px 10px 0 rgba(0, 0, 0, 0.1);
-        transition: box-shadow .3s ease;
-        img {
-            box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, .01);
-        }
-    }
-    &:hover &__description-link {
-        color: $red;
-    }
     &__overlay-link {
         position: absolute;
+        display: none;
         top: 0;
         left: 0;
         width: 100%;
@@ -133,68 +119,23 @@
     &__image {
         width: 100%;
     }
-    &_information {
-        position: relative;
-        max-height: 453px;
-        .b-card__bottom {
-            visibility: hidden;
-        }
-        .b-link {
-            color: $dark;
-        }
-        &:hover {
-            box-shadow: $box-shadow;
-            background-color: $white;
-            & .b-card__image {
-                box-shadow: none;
-            }
-            & .b-link {
-                color: $red;
-            }
-        }
+    &__options {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px 15px;
+        width: 300px;
+        height: 150px;
+        border: 1px solid $grey;
+        border-left: 0;
+        background-color: $white;
     }
-    &_full {
-        width: 100%;
-        margin: 0;
-        padding-bottom: 66.6%;
-        & .b-card-header__image {
-            position: absolute;
-            max-height: inherit;
-        }
+    &:hover {
+       .b-card__overlay-link {
+           display: block;
+       }
     }
-    &_full-popup {
-        display: fles;
-        justify-content:center;
-        align-items:center;
-        width: calc(100% - 20px);
-        height: 100%;
-        min-height: auto;
-        margin-top: 20px;
-        background: none;
-    }
-    &_full-popup-zoomed {
-        margin-top: 0px;
-    }
-    &_full-tooltip {
-        width: 100%;
-        min-height: auto;
-        margin: 0;
-        padding: 0 10px;
-        box-shadow: none;
-    }
-    &_contacts {
-        min-height: 345px;
-        padding-bottom: 0;
-        & .b-card-header__image {
-            height: auto;
-        }
-    }
-    &_office {
-        min-height: 457px;
-        & .b-card-header__image {
-            height: 457px;
-        }
-    }
+
 }
 
 

@@ -9,8 +9,6 @@ import {
     ReflectiveInjector
 } from '@angular/core';
 import { PopupComponent } from './popup.component';
-import { IAppStore } from '../app.store';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
@@ -22,7 +20,6 @@ export class PopupService {
         private componentFactoryResolver: ComponentFactoryResolver,
         private injector: Injector,
         private appRef: ApplicationRef,
-        // private store: Store<IAppStore>
     ) { }
 
     private getRootComponent(): ComponentRef<any> {
@@ -56,27 +53,24 @@ export class PopupService {
                 provide: 'modal',
                 useValue: this.componentRef
             }], this.injector);
-    
+
             this.componentsInputs(this.componentRef, {options: data, injector: injector});
             appRef.attachView(this.componentRef.hostView);
             position.appendChild(componentRootNode);
-    
+
             this.componentRef.onDestroy(() => {
                 appRef.detachView(this.componentRef.hostView);
                 this.componentRef = null;
             });
-    
+
             this.componentRef.instance.close = (data) => {
-    
-                if(data) {
-                    resolve(data)
+                if (data) {
+                    resolve(data);
                 }
-    
+
                 this.componentRef.destroy();
-            }
-            
-        })
-        
+            };
+        });
 
     }
 }

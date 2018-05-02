@@ -8,12 +8,11 @@ import { AppService } from './app.service';
 
 export class AppComponent implements OnInit {
 
-  constructor(private appService: AppService){}
+  constructor (private appService: AppService) {}
   cars: any;
   filteradCas: any;
 
   ngOnInit() {
     this.appService.loadCars().subscribe(x => this.cars = x)
   }
-  
 }

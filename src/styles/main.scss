@@ -40,15 +40,6 @@ body {
   font-weight: 400;
   overflow-x: hidden;
 }
-.mobile-menu-opened body {
-  left: 270px;
-  width: 100%;
-  overflow: hidden;
-  position: fixed;
-}
-.filter-mobile-opened body {
-  overflow: hidden;
-}
 
 body.popup-opened {
   position: fixed;
@@ -56,3 +47,6 @@ body.popup-opened {
 	overflow: hidden;
 }
 
+button{
+  cursor: pointer;
+}
