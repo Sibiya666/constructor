@@ -34,42 +34,32 @@ export class ScrollBarComponent implements OnInit, AfterViewInit {
 
     @HostListener('click', ['$event'])
     down(event) {
-        this.dotOffsetX = event.offsetX - this.dotCenter;
-        // console.log(this.dotOffsetX)
-        
+        this.dotOffsetX = event.offsetX - this.dotCenter;        
         this.onChangebrightness.emit(this.dotOffsetX);
     }
 
     @HostListener('mousedown', ['$event'])
     slideStart(event) {
         this.isSlide = true;
-        console.log(1)
     }
 
     @HostListener('mouseup', ['$event'])
     slideEnd(event) {
         this.isSlide = false;
-        console.log(2)
-
     }
 
     @HostListener('mousemove', ['$event'])
     slideContinium(event) {
         if (this.isSlide && event.offsetX - this.dotCenter > 0)  {
             this.dotOffsetX = ((event.offsetX - this.dotCenter));
-            // console.log(event.offsetX)
-            this.onChangebrightness.emit(this.dotOffsetX / this.scale);
-
+            // this.onChangebrightness.emit(this.dotOffsetX / this.scale);
         }
     }
 
-    constructor( 
-        private cdr: ChangeDetectorRef
-    ) {
-    }
+    constructor(    ) {   }
 
     ngOnInit(): void { 
-         console.log(this.dotOffsetX)
+  
     }
 
     ngAfterViewInit(): void {

@@ -3,7 +3,8 @@ import {
     Output,
     EventEmitter,
     OnInit,
-    Input
+    Input,
+    ChangeDetectionStrategy
 } from '@angular/core';
 import {
     trigger,
@@ -16,6 +17,7 @@ import {
 @Component({
     selector: 'app-card-options',
     templateUrl: './card-options.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
         trigger('optionsState', [
             state('true', style({
