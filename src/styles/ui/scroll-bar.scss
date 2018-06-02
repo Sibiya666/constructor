@@ -1,5 +1,6 @@
 .scroll-bar{
     position: relative;
+    cursor: pointer;
     &__line {
         position: absolute;
         width: 100%;
@@ -19,5 +20,6 @@
         background-color: $white;
         box-shadow: 0 0 1px $grey-light;
         z-index: 2;
+        transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1)
     }
 }

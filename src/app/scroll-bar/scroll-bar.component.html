@@ -4,6 +4,8 @@
     <div 
         class="scroll-bar__dot"
         [style.left.px]="dotOffsetX"
+        scroll-slide
+        (dotOffsetXChange)="onDotOffsetXChange($event)"
         #dot
     ></div>
 </div>

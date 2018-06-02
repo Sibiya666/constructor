@@ -4,11 +4,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { CardComponent , CardOptionsComponent } from './card';
+
+import {
+  CardComponent,
+  CardOptionsComponent
+} from './card';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ScrollBarComponent } from './scroll-bar';
-import { PopupComponent, PopupService} from './popup';
+
+import {
+  ScrollBarComponent,
+  ScrollSlideDirective
+} from './scroll-bar';
+
+import {
+  PopupComponent,
+  PopupService
+} from './popup';
+
 import { AppService } from './app.service';
 
 @NgModule({
@@ -19,7 +33,8 @@ import { AppService } from './app.service';
     HeaderComponent,
     FooterComponent,
     PopupComponent,
-    ScrollBarComponent
+    ScrollBarComponent,
+    ScrollSlideDirective
   ],
   imports: [
     BrowserModule,

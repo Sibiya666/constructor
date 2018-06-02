@@ -15,16 +15,9 @@ import { PopupService } from '../popup';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  animations: [
-    trigger('optionsState', [
-      state('true', style({
-        right: '-300px'
-      })),
-      transition('void <=> *', [
-        animate(200)
-      ])
-    ])
-  ]
+  host: {
+    class: 'b-card-wrapper'
+  },
 })
 export class CardComponent implements OnInit {
 
@@ -32,8 +25,10 @@ export class CardComponent implements OnInit {
   isData = false;
   visibleOptions = true;
   brightness: number;
+
   @Input()
   cars: any;
+  
   constructor(
     private popupService: PopupService
   ) { }

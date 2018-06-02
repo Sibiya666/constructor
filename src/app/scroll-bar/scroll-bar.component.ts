@@ -13,57 +13,51 @@ import {
 
 @Component({
     selector: 'app-scroll-bar',
-    templateUrl: './scroll-bar.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './scroll-bar.component.html'
 })
 
 export class ScrollBarComponent implements OnInit, AfterViewInit {
     dotOffsetX: number;
-    isSlide = false;
     scale: number;
     dotCenter: number;
+    get startPosition() {
+        return this.container.nativeElement.getBoundingClientRect().left
+    }
 
     @ViewChild('container')
     container: ElementRef;
-    
+
     @ViewChild('dot')
     dot: ElementRef;
 
     @Output()
-    onChangebrightness = new EventEmitter<number>();
+    onChangeValue = new EventEmitter<number>();
 
     @HostListener('click', ['$event'])
     down(event) {
-        this.dotOffsetX = event.offsetX - this.dotCenter;        
-        this.onChangebrightness.emit(this.dotOffsetX);
+        this.dotOffsetX = event.offsetX - this.dotCenter;
+        this.onChangeValue.emit(this.dotOffsetX / this.scale);
     }
 
-    @HostListener('mousedown', ['$event'])
-    slideStart(event) {
-        this.isSlide = true;
-    }
+    constructor() { }
 
-    @HostListener('mouseup', ['$event'])
-    slideEnd(event) {
-        this.isSlide = false;
-    }
+    ngOnInit(): void {
 
-    @HostListener('mousemove', ['$event'])
-    slideContinium(event) {
-        if (this.isSlide && event.offsetX - this.dotCenter > 0)  {
-            this.dotOffsetX = ((event.offsetX - this.dotCenter));
-            // this.onChangebrightness.emit(this.dotOffsetX / this.scale);
-        }
-    }
-
-    constructor(    ) {   }
-
-    ngOnInit(): void { 
-  
     }
 
     ngAfterViewInit(): void {
-        this.scale = this.container.nativeElement.getBoundingClientRect().width / 100;
+        this.scale = this.container.nativeElement.getBoundingClientRect().width / 300;
         this.dotCenter = this.dot.nativeElement.getBoundingClientRect().width / 2;
+
+    }
+
+    onDotOffsetXChange(event: any) {
+        let currentPosition = event - this.startPosition;
+
+        if (currentPosition > -this.dotCenter && this.container.nativeElement.getBoundingClientRect().width - this.dotCenter> currentPosition) {
+            this.dot.nativeElement.style.left = currentPosition + 'px';
+            this.onChangeValue.emit(currentPosition / this.scale);
+        }
+
     }
 }

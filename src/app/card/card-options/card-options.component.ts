@@ -21,7 +21,7 @@ import {
     animations: [
         trigger('optionsState', [
             state('true', style({
-                right: '-331px',
+                right: '-320px',
                 opacity: '1'
             })),
             transition('void <=> *', [

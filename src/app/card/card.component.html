@@ -1,58 +1,49 @@
+<div class="b-card">
 
-  <div class="b-card" >
-    
-    <a class="b-card__overlay-link">
-      <button (click)="openPopup()">add card</button>
-      <button (click)="toogleVisibleOptions()">options</button>
+  <a class="b-card__overlay-link">
+    <button (click)="openPopup()">add card</button>
+    <button (click)="toogleVisibleOptions()">options</button>
 
-    </a>
+  </a>
 
-    <!-- <div class="b-card-loader"  *ngIf="!carData; else card">
+  <!-- <div class="b-card-loader"  *ngIf="!carData; else card">
       <p >Добавить..</p>
     </div> -->
-    <div #card>
 
-      <!-- <div class="b-card__options" [@optionsState]="visibleOptions" *ngIf="visibleOptions">
+  <!-- <div class="b-card__options" [@optionsState]="visibleOptions" *ngIf="visibleOptions">
         <p>kjlk</p>
       </div> -->
-      <app-card-options 
-        [isVisible]="visibleOptions"
-        (brightness)="changeBrightness($event)"
-        ></app-card-options>
-      <div class="b-card-header" >
-        <img 
-          alt="Авто с пробегом" 
-          class="b-card-header__image" 
-          [src]= "carData.img"
-          [ngStyle]="{'filter': 'brightness(' + brightness + ')'}"
-          >
-      </div>
 
-      <div class="b-card__bottom">
-        <div class="b-card__description">
-          <h4 class="b-h4_no-margin">
-            <span class="b-card__description-title">{{carData.title}}</span>
-            <span class="b-card__description-year">2014, </span>
-            <span class="b-card__description-city">{{carData.city}}</span>
-          </h4>
-          <hr class="b-hr b-hr_inner-block">
-          <div class="b-card-price">
-            <div class="b-card-price__col-2">
-              <span class="b-card-price__title">Цена:</span>
-              <span class="b-card-price__description b-card-price__description_sale">{{carData.price}} ₽</span>
-        
-              <span class="b-card-price__description b-card-price__description_old-price" *ngIf="carData.oldPrice">{{carData.oldPrice}} ₽</span>
-            </div>
-            <div class="b-card-price__col-2">
-              <span class="b-card-price__title">В кредит:</span>
-              <div class="b-card-price__description b-card-price__description_credit">{{carData.creditPrice}}&nbsp; ₽/мес
-              </div>
-            </div>
-          </div>
+  <div class="b-card-header">
+    <img alt="Авто с пробегом" class="b-card-header__image" [src]="carData.img" [ngStyle]="{'filter': 'brightness(' + brightness + ')'}">
+  </div>
+
+  <div class="b-card__bottom">
+    <div class="b-card__description">
+      <h4 class="b-h4_no-margin">
+        <span class="b-card__description-title">{{carData.title}}</span>
+        <span class="b-card__description-year">2014, </span>
+        <span class="b-card__description-city">{{carData.city}}</span>
+      </h4>
+      <hr class="b-hr b-hr_inner-block">
+      <div class="b-card-price">
+        <div class="b-card-price__col-2">
+          <span class="b-card-price__title">Цена:</span>
+          <span class="b-card-price__description b-card-price__description_sale">{{carData.price}} ₽</span>
+
+          <span class="b-card-price__description b-card-price__description_old-price" *ngIf="carData.oldPrice">{{carData.oldPrice}} ₽</span>
         </div>
-        <div class="b-card__info">
-          <div class="b-card__info-txt"> 56 341 км | 1.6 л, 124 л. с., Бензиновый | Механика, Передний привод | Внедорожник </div>
+        <div class="b-card-price__col-2">
+          <span class="b-card-price__title">В кредит:</span>
+          <div class="b-card-price__description b-card-price__description_credit">{{carData.creditPrice}}&nbsp; ₽/мес
+          </div>
         </div>
       </div>
     </div>
+    <div class="b-card__info">
+      <div class="b-card__info-txt"> 56 341 км | 1.6 л, 124 л. с., Бензиновый | Механика, Передний привод | Внедорожник </div>
+    </div>
   </div>
+</div>
+
+<app-card-options [isVisible]="visibleOptions" (brightness)="changeBrightness($event)"></app-card-options>

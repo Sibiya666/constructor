@@ -12,6 +12,7 @@
         vertical-align: top;
         background: $white;
         cursor: pointer;
+        z-index: 4;
         &__overlay-link {
             position: absolute;
             top: 0;
@@ -129,6 +130,7 @@
         border: 1px solid $grey;
         border-left: 0;
         background-color: $white;
+        cursor: auto;
     }
     &:hover {
        .b-card__overlay-link {
@@ -138,4 +140,6 @@
 
 }
 
-
+.b-card-wrapper {
+    position: relative;
+}

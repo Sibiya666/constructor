@@ -1,4 +1,4 @@
 <div class="b-card__options" *ngIf="isVisible" [@optionsState]="isVisible" #container>
-  <!-- <p>Яркость:</p> -->
-  <app-scroll-bar (onChangebrightness)="onChangeBrightness($event)"></app-scroll-bar>
+  <p>Яркость:</p>
+  <app-scroll-bar (onChangeValue)="onChangeBrightness($event)"></app-scroll-bar>
 </div>

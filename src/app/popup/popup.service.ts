@@ -23,7 +23,8 @@ export class PopupService {
     ) { }
 
     private getRootComponent(): ComponentRef<any> {
-        const components = this.appRef['_rootComponents'];
+        const components = this.appRef.components;
+
         if (components.length) {
             return components[0];
         }
