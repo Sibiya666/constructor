@@ -33,20 +33,20 @@ import {
 
 export class CardOptionsComponent implements OnInit {
     widthContainer = 0;
+    brightness = '0.5';
 
     @Output()
-    brightness = new EventEmitter<number>();
+    onBrightness = new EventEmitter<number>();
 
     @Input()
     isVisible = false;
 
     constructor() { }
 
-    ngOnInit(): void {
+    ngOnInit(): void { }
 
-    }
-
-    onChangeBrightness($event) {
-        this.brightness.emit($event);
+    onChangeBrightness(event: number) {
+        this.brightness = event.toFixed(2);
+        this.onBrightness.emit(event);
     }
 }

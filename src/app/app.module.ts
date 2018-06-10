@@ -13,10 +13,8 @@ import {
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
-import {
-  ScrollBarComponent,
-  ScrollSlideDirective
-} from './scroll-bar';
+import {  ScrollBarComponent } from './scroll-bar';
+import { ScrollSlideDirective } from './directives';
 
 import {
   PopupComponent,
