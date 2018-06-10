@@ -19,8 +19,8 @@ import { PopupService } from '../popup';
     class: 'b-card-wrapper'
   },
 })
-export class CardComponent implements OnInit {
 
+export class CardComponent implements OnInit {
   carData: any = null;
   isData = false;
   visibleOptions = true;

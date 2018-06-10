@@ -15,7 +15,7 @@ export class ScrollSlideDirective {
 	@Output()
 	dotOffsetXChange: EventEmitter<number> = new EventEmitter();
 
-	constructor(private element: ElementRef) { }
+	constructor() { }
 
 	@HostListener('panstart', ['$event'])
 	private onMouseDown(): boolean {

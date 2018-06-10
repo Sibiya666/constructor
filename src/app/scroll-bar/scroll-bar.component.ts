@@ -7,8 +7,7 @@ import {
     ElementRef,
     ViewChild,
     AfterViewInit,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef
+    Input
 } from '@angular/core';
 
 @Component({
@@ -17,13 +16,18 @@ import {
 })
 
 export class ScrollBarComponent implements OnInit, AfterViewInit {
-    dotOffsetX: number;
+    positionX: number;
     scale: number;
     dotCenter: number;
-    get startPosition() {
-        return this.container.nativeElement.getBoundingClientRect().left
-    }
+    startPosition : number;
+    clientRect: any;
 
+    @Input()
+    minValue = 0;
+
+    @Input()
+    maxValue = 1;
+    
     @ViewChild('container')
     container: ElementRef;
 
@@ -35,29 +39,34 @@ export class ScrollBarComponent implements OnInit, AfterViewInit {
 
     @HostListener('click', ['$event'])
     down(event) {
-        this.dotOffsetX = event.offsetX - this.dotCenter;
-        this.onChangeValue.emit(this.dotOffsetX / this.scale);
+        this.positionX = event.offsetX - this.dotCenter;
+        this.positionX = this.positionX < 0 ? 0: this.positionX;
+        this.setPositionLeft(this.positionX);
+        this.onChangeValue.emit(this.positionX / this.scale);
     }
 
     constructor() { }
 
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void {  }
 
     ngAfterViewInit(): void {
-        this.scale = this.container.nativeElement.getBoundingClientRect().width / 300;
+        this.clientRect = this.container.nativeElement.getBoundingClientRect();
+        this.scale = this.clientRect.width / this.maxValue;
         this.dotCenter = this.dot.nativeElement.getBoundingClientRect().width / 2;
-
+        this.startPosition = this.clientRect.right;
     }
 
-    onDotOffsetXChange(event: any) {
-        let currentPosition = event - this.startPosition;
+    private onChangePositionX(event: number) {
+        this.positionX = event - this.startPosition;
+        this.positionX = this.positionX < 0 ? 0 : this.positionX;
 
-        if (currentPosition > -this.dotCenter && this.container.nativeElement.getBoundingClientRect().width - this.dotCenter> currentPosition) {
-            this.dot.nativeElement.style.left = currentPosition + 'px';
-            this.onChangeValue.emit(currentPosition / this.scale);
+        if (this.container.nativeElement.getBoundingClientRect().width - this.dotCenter> this.positionX) {
+            this.setPositionLeft(this.positionX);
+            this.onChangeValue.emit(this.positionX / this.scale);
         }
+    }
 
+    private setPositionLeft(value: number) {
+        this.dot.nativeElement.style.left = value + 'px'
     }
 }
