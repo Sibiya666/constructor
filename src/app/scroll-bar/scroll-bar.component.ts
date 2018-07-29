@@ -9,7 +9,7 @@ import {
     AfterViewInit,
     Input
 } from '@angular/core';
-
+import { IСoordinates } from '../directives/directive.models';
 import { IStartPosition } from './scroll-bar.models';
 
 @Component({
@@ -45,7 +45,6 @@ export class ScrollBarComponent implements OnInit, AfterViewInit {
     @Output()
     onChangeValue = new EventEmitter<number>();
 
-
     @HostListener('click', ['$event'])
     down(event) {
         this.positionX = event.offsetX - this.dotCenter;
@@ -66,8 +65,8 @@ export class ScrollBarComponent implements OnInit, AfterViewInit {
         this.isPercent ? this.setPositionLeft(this.containerRect.width / 100 * this.defaultValue - this.dotCenter) : this.setPositionLeft(this.scale * this.defaultValue - this.dotCenter);  
     }
 
-    private onChangePositionX(event: number) {
-        this.positionX = event - this.startPosition;
+    private onChangePositionX(event: IСoordinates) {
+        this.positionX = event.x - this.startPosition;
         this.positionX = this.positionX < this.minValue ? this.minValue : this.positionX;
 
         if (this.container.nativeElement.getBoundingClientRect().width - this.dotCenter> this.positionX) {

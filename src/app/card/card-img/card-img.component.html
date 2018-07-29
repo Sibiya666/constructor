@@ -1,0 +1,11 @@
+<img 
+    #imgContainer
+    alt="Авто с пробегом" 
+    class="b-card-header__image"
+    [src]="img" 
+    [class.b-card-header__image_edit] = 'isEditPositionImg'
+    [ngStyle]="{'filter': 'brightness(' + brightness + ')'}"
+    [style.top.px]="imgPositionY"
+    (positionChange)=(onPositionChange($event))
+    position-change-detection
+    >

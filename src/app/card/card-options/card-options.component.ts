@@ -13,6 +13,7 @@ import {
     animate,
     transition
 } from '@angular/animations';
+import { FormControl } from '../../../../node_modules/@angular/forms';
 
 @Component({
     selector: 'app-card-options',
@@ -38,15 +39,29 @@ export class CardOptionsComponent implements OnInit {
     @Output()
     onBrightness = new EventEmitter<number>();
 
+    @Output()
+    isEditPositionImg = new EventEmitter<boolean>();
+
     @Input()
     isVisible = false;
+    
+
+    editPositionImg = new FormControl('true');
 
     constructor() { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.editPositionImg.valueChanges.subscribe(value =>
+            this.isEditPositionImg.emit(value)
+        )
+    }
 
     onChangeBrightness(event: number) {
         this.brightness = event.toFixed(2);
         this.onBrightness.emit(event);
     }
+
+
+
+
 }

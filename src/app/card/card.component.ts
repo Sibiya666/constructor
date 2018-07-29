@@ -25,10 +25,11 @@ export class CardComponent implements OnInit {
   isData = false;
   visibleOptions = true;
   brightness: number;
+  isEditPositionImg: boolean = true;
 
   @Input()
   cars: any;
-  
+
   constructor(
     private popupService: PopupService
   ) { }
@@ -36,9 +37,9 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.carData = this.cars[0];
-   }
+  }
 
-  getData: (_?) => {_};
+  getData: (_?) => { _ };
 
   toogleVisibleOptions() {
     this.visibleOptions = !this.visibleOptions;
@@ -51,4 +52,9 @@ export class CardComponent implements OnInit {
   async openPopup() {
     this.carData = await this.popupService.openPopup(this.cars);
   }
+
+  onEditPositionImg(value: boolean) {
+    this.isEditPositionImg = value;
+  }
+
 }

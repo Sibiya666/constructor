@@ -1,1 +1,1 @@
-export * from './scroll-slide.directive';
+export * from './position-change-detection.directive';

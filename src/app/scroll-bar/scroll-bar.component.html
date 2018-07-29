@@ -3,8 +3,8 @@
     <div class="scroll-bar__line"></div>
     <div 
         class="scroll-bar__dot"
-        scroll-slide
-        (dotOffsetXChange)="onChangePositionX($event)"
+        position-change-detection
+        (positionChange)="onChangePositionX($event)"
         #dot
     ></div>
 </div>

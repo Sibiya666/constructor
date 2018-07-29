@@ -15,7 +15,12 @@
       </div> -->
 
   <div class="b-card-header">
-    <img alt="Авто с пробегом" class="b-card-header__image" [src]="carData.img" [ngStyle]="{'filter': 'brightness(' + brightness + ')'}">
+    <app-card-img
+      [img]="carData.img"
+      [brightness]="brightness"
+      [isEditPositionImg]="isEditPositionImg"
+      >
+    </app-card-img>
   </div>
 
   <div class="b-card__bottom">
@@ -46,4 +51,8 @@
   </div>
 </div>
 
-<app-card-options [isVisible]="visibleOptions" (onBrightness)="changeBrightness($event)"></app-card-options>
+<app-card-options 
+  [isVisible]="visibleOptions" 
+  (onBrightness)="changeBrightness($event)"
+  (isEditPositionImg)="onEditPositionImg($event)">
+</app-card-options>

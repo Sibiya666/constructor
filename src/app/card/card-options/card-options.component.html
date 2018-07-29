@@ -2,4 +2,7 @@
   <p>Яркость: {{brightness}}</p>
   <app-scroll-bar (onChangeValue)="onChangeBrightness($event)
   " [defaultValue]="brightness"></app-scroll-bar>
+  <br>
+  <app-checkbox [formControl]='editPositionImg'>Режим редактирования размера позиционирования:</app-checkbox>
+  {{value}}
 </div>
